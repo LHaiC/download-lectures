@@ -27,17 +27,11 @@ jobs:
       run: python download_lectures.py
       
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cs166-lectures
         path: cs166_lectures/
         retention-days: 7
-
-    - name: Send notification
-      if: always()
-      uses: actions-cool/workflow-notify@v1
-      with:
-        dingtalk_token: ${{ secrets.DINGTALK_TOKEN }}
 
     - name: Commit and push changes
       if: success()
